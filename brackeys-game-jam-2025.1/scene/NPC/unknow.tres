@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bxke4mbuavwhu"]
+
+[ext_resource type="Script" path="res://scene/NPC/Npc.gd" id="1_brcof"]
+
+[resource]
+script = ExtResource("1_brcof")
+npc_name = ""
+relation_npc_player = 0.0

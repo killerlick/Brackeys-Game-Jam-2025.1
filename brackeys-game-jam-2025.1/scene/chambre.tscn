@@ -1,0 +1,152 @@
+[gd_scene load_steps=8 format=3 uid="uid://8f4p6qdixgpt"]
+
+[ext_resource type="Script" path="res://script/chambre.gd" id="1_r7aib"]
+[ext_resource type="PackedScene" uid="uid://c15wiyug4k7fy" path="res://scene/hud.tscn" id="1_sty3n"]
+[ext_resource type="PackedScene" uid="uid://uywl3f2gm20b" path="res://scene/player.tscn" id="2_82j4y"]
+[ext_resource type="Texture2D" uid="uid://dfskd454lapdh" path="res://sprite/chambre.png" id="3_ysq84"]
+[ext_resource type="PackedScene" uid="uid://vlvm3vcmc4h0" path="res://scene/lit.tscn" id="4_21tjo"]
+[ext_resource type="PackedScene" uid="uid://c3pemqey1qiqm" path="res://scene/ordi.tscn" id="5_n4hy0"]
+[ext_resource type="PackedScene" uid="uid://b3rnjm3cy50p4" path="res://scene/phone.tscn" id="7_dmi11"]
+
+[node name="chambre" type="Node2D"]
+script = ExtResource("1_r7aib")
+
+[node name="background" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("3_ysq84")
+metadata/_edit_use_anchors_ = true
+
+[node name="HUD" parent="." instance=ExtResource("1_sty3n")]
+
+[node name="computer_option" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/computer_option"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.391406
+anchor_top = 0.415278
+anchor_right = 0.608594
+anchor_bottom = 0.584722
+offset_left = 20.0
+offset_top = 6.94724
+offset_right = 246.309
+offset_bottom = 115.053
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 28
+
+[node name="background_pc" type="PanelContainer" parent="HUD/computer_option/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/computer_option/MarginContainer/background_pc"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="study" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Study"
+
+[node name="work" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Work"
+
+[node name="assignement" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "assignment"
+
+[node name="play game" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Play game"
+
+[node name="cancel" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "cancel"
+
+[node name="phone_option" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/phone_option"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -33.0
+offset_right = 34.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/phone_option/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="VBoxContainer" parent="HUD/phone_option/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="contact" type="Button" parent="HUD/phone_option/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Contact"
+
+[node name="cancel_phone" type="Button" parent="HUD/phone_option/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "cancel"
+
+[node name="Player" parent="." instance=ExtResource("2_82j4y")]
+
+[node name="Lit" parent="." instance=ExtResource("4_21tjo")]
+position = Vector2(1056, 740)
+
+[node name="ordi" parent="." instance=ExtResource("5_n4hy0")]
+position = Vector2(372, 461)
+
+[node name="phone" parent="." instance=ExtResource("7_dmi11")]
+position = Vector2(55, 666)
+
+[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/study" to="." method="_on_study_pressed"]
+[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/work" to="." method="_on_work_pressed"]
+[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/assignement" to="." method="_on_assignement_pressed"]
+[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/play game" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="HUD/phone_option/PanelContainer/MarginContainer/HBoxContainer/contact" to="." method="_on_contact_pressed"]
+[connection signal="pressed" from="HUD/phone_option/PanelContainer/MarginContainer/HBoxContainer/cancel_phone" to="." method="_on_cancel_phone_pressed"]
+[connection signal="stat_changed" from="Player" to="." method="_on_player_stat_changed"]
+[connection signal="sleeping" from="Lit" to="." method="_on_lit_sleeping"]

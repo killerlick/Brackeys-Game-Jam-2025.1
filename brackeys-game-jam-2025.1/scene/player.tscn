@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://uywl3f2gm20b"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_n8dss"]
+[ext_resource type="Script" path="res://scene/NPC/Npc.gd" id="2_57oft"]
+[ext_resource type="Resource" uid="uid://dvdeg6x4vfj03" path="res://scene/NPC/best_friend.tres" id="3_ticn7"]
+[ext_resource type="Resource" uid="uid://nc5oxppn5q0t" path="res://scene/NPC/mom.tres" id="4_1nv7f"]
+
+[node name="Player" type="Node"]
+script = ExtResource("1_n8dss")
+contact = Array[ExtResource("2_57oft")]([ExtResource("3_ticn7"), ExtResource("4_1nv7f"), null])

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://d2bpfiwmj8gem"
+path="res://.godot/imported/computer_interaction.dialogue-469920f5b2fd5bea1a945ad1d6bae196.tres"
+
+[deps]
+
+source_file="res://dialogue/computer_interaction.dialogue"
+dest_files=["res://.godot/imported/computer_interaction.dialogue-469920f5b2fd5bea1a945ad1d6bae196.tres"]
+
+[params]
+
+defaults=true

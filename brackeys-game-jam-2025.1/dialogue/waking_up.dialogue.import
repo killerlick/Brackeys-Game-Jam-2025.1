@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dnxo11vvpy0hr"
+path="res://.godot/imported/waking_up.dialogue-d8d70087fd6640d46de8ba7127cce76c.tres"
+
+[deps]
+
+source_file="res://dialogue/waking_up.dialogue"
+dest_files=["res://.godot/imported/waking_up.dialogue-d8d70087fd6640d46de8ba7127cce76c.tres"]
+
+[params]
+
+defaults=true
