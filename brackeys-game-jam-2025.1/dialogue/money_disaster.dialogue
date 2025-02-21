@@ -5,8 +5,13 @@ bon , un rat a manger le cable
 	you lost 70$ , mais ta un nouveau cable
 	do Global.player.decrement_gauge(70 , "money")  
 - reparer moi meme
-	finally , avec beaucoup d'effort  , tu empire la situation et depense 100$
-	do Global.player.decrement_gauge(100 , "money")  
-	do Global.player.decrement_gauge(50 , "energy")  
+	if Global.player.player_intelligence >= 40
+		tu reussis a reparer le cable, malheur eviter XD
+	else
+		finally , avec beaucoup d'effort  , tu empire la situation 
+		maintenant tu dois aussi arranger la prise relier
+		tu depense 100$
+		do Global.player.decrement_gauge(100 , "money")  
+		do Global.player.decrement_gauge(50 , "energy")  
 
 => END
