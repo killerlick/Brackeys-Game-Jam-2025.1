@@ -1,17 +1,19 @@
 ~ start
 
-bon , un rat a manger le cable
-- refund it ...
-	you lost 70$ , mais ta un nouveau cable
-	do Global.player.decrement_gauge(70 , "money")  
-- reparer moi meme
-	if Global.player.player_intelligence >= 40
-		tu reussis a reparer le cable, malheur eviter XD
-	else
-		finally , avec beaucoup d'effort  , tu empire la situation 
-		maintenant tu dois aussi arranger la prise relier
-		tu depense 100$
-		do Global.player.decrement_gauge(100 , "money")  
-		do Global.player.decrement_gauge(50 , "energy")  
 
+A rat chewed through your cable. What do you do?  
+
+- **Buy a new one**  
+	You spend $70 on a replacement. Problem solved, but your wallet feels lighter...  
+	do Global.player.decrement_gauge(70, "money")  
+
+- **Try to fix it myself**  
+	if Global.player.player_intelligence >= 40  
+		With your skills, you manage to repair the cable. Crisis averted!  
+	else  
+		Despite your best efforts, you only make things worse.  
+		Now, the socket is damaged too...  
+		You end up spending $100 to fix everything.  
+		do Global.player.decrement_gauge(100, "money")  
+		do Global.player.decrement_gauge(50, "energy")
 => END

@@ -7,27 +7,30 @@ me:
 
 ~ study_no_energy
 
-me: Sorry, but i will not remenber anithing about this
+% me: Sorry, but there's no way I'll remember anything in this state... Might as well stare at the wall instead.  
+% me: I could try to study, but let’s be real... Nothing’s going to stick in my brain like this.  
 
 => END!
 
 ~ work_no_energy
 
-me: i'm to tired for this company
+% me: I'm way too exhausted to deal with this company right now. Maybe they can pay me in nap time...  
+% me: Just thinking about work is draining me even more... Nope, not happening today.  
 
 
 => END!
 
 ~ assignement_no_energy
 
-me:
+% me: My brain has officially shut down. This assignment isn’t happening tonight.  
+% me: I’d love to finish this, but my brain has officially checked out. Maybe future me will deal with it...  
 
 
 => END!
 
 ~ play_game_no_energy
 
-me: to tired to play games
-
+% me: Too tired to even hold the controller... Guess sleep wins this round.  
+% me: I usually play for fun, not to suffer. No energy, no gaming today...  
 
 => END

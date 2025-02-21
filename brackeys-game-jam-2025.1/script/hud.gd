@@ -27,9 +27,7 @@ func _ready() -> void:
 		set_gauge(player)
 		add_contact()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 func set_gauge(player : Player):
 	print("setgauge read")

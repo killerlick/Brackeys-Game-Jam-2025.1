@@ -41,7 +41,11 @@ func money_disaster(player : Player ):
 		money_palier.pop_front()
 		export_player_stat(player)
 
-		
+func moral_disaster(player : Player):
+	pass
+
+func stress_disaster(player : Player):
+	pass
 
 func import_player_stat(player : Player):
 	player_energy = player.player_energy

@@ -14,9 +14,7 @@ func _ready() -> void:
 		pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -29,7 +27,13 @@ func sleep():
 	if(player.player_energy >= 80):
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/bed_interaction.dialogue") , "full_energy")
 	else:
-		player.increment_gauge(100 , "energy")
+		
+		if(player.player_stress >= 50):
+			player.increment_gauge(80 , "energy")
+		elif (player.player_stress >= 80):
+			player.increment_gauge(60 , "energy")
+		else:
+			player.increment_gauge(100 , "energy")
 		Global.day_number += 1
 		Global.import_player_stat(player)
 		sleeping.emit()
