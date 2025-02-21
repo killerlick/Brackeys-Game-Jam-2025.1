@@ -15,6 +15,7 @@ var phase
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_node("Player") # Replace with function body.
+	Global.player = player
 	print(player)
 	phase = Global.day_phase.MATIN
 
@@ -24,7 +25,12 @@ func _on_player_stat_changed() -> void:
 
 
 func _on_lit_sleeping() -> void:
-	hud.black_screen.fade_out_sleeping() # Replace with function body.
+	hud.black_screen.fade_out_sleeping()
+	if(Global.player_money > Global.money_palier[0]):
+		Global.money_disaster(player)
+		Global.export_player_stat(player)
+
+		
 
 
 func _on_study_pressed() -> void:
@@ -47,10 +53,6 @@ func _on_play_game_pressed() -> void:
 
 func _on_cancel_pressed() -> void:
 	computer_option.hide() # Replace with function body.
-
-
-func _on_contact_pressed() -> void:
-	pass # Replace with function body.
 
 
 func _on_cancel_phone_pressed() -> void:

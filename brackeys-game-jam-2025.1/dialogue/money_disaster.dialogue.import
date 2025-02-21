@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://gf061qpu3xf3"
+path="res://.godot/imported/money_disaster.dialogue-7bab7fc9c8885f7b5207e55531a5247b.tres"
+
+[deps]
+
+source_file="res://dialogue/money_disaster.dialogue"
+dest_files=["res://.godot/imported/money_disaster.dialogue-7bab7fc9c8885f7b5207e55531a5247b.tres"]
+
+[params]
+
+defaults=true

@@ -6,6 +6,13 @@ extends CanvasLayer
 @onready var stress_bar = $MarginContainer/GridContainer/stress/ProgressBar
 @onready var money = $MarginContainer/money/Label2
 
+@onready var phone = $phone_option
+@onready var phone_option = $phone_option/PanelContainer/MarginContainer/HBoxContainer
+@onready var contact_onglet = $phone_option/PanelContainer/MarginContainer/VBoxContainer
+
+@onready var contact_container = $phone_option/PanelContainer/MarginContainer/VBoxContainer/contact_container
+
+
 @onready var black_screen = $ColorRect
 
 var player : Player
@@ -18,6 +25,7 @@ func _ready() -> void:
 	if(player != null):
 		print(player)
 		set_gauge(player)
+		add_contact()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -33,3 +41,26 @@ func set_gauge(player : Player):
 
 func show_dialogue():
 	pass
+
+func add_contact():
+	for contact in player.contact:
+		var button = Button.new()
+		button.text = contact.npc_name
+		button.pressed.connect(self._contact_pressed.bind(contact))
+		contact_container.add_child(button)
+
+
+func _contact_pressed(contact : Npc):
+	pass
+
+
+
+func _on_cancel__contact_container_pressed() -> void:
+	contact_onglet.hide()
+	phone_option.show()
+	
+
+
+func _on_contact_pressed() -> void:
+	phone_option.hide()
+	contact_onglet.show() # Replace with function body.

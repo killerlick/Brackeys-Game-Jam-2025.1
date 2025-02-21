@@ -1,8 +1,8 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dvdeg6x4vfj03"]
+[gd_resource type="Resource" script_class="Npc" load_steps=2 format=3 uid="uid://dvdeg6x4vfj03"]
 
 [ext_resource type="Script" path="res://scene/NPC/Npc.gd" id="1_bd0qu"]
 
 [resource]
 script = ExtResource("1_bd0qu")
-npc_name = ""
-relation_npc_player = 0.0
+npc_name = "steve"
+relation_npc_player = 80.0

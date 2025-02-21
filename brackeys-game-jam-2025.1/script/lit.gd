@@ -29,10 +29,12 @@ func sleep():
 	if(player.player_energy >= 80):
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/bed_interaction.dialogue") , "full_energy")
 	else:
-		Global.day_number += 1
-		sleeping.emit()
 		player.increment_gauge(100 , "energy")
-	
+		Global.day_number += 1
+		Global.import_player_stat(player)
+		sleeping.emit()
+
+
 
 
 func _on_mouse_entered() -> void:

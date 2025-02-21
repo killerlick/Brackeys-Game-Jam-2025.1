@@ -130,6 +130,17 @@ text = "Contact"
 layout_mode = 2
 text = "cancel"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/phone_option/PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="contact_container" type="GridContainer" parent="HUD/phone_option/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="cancel _contact_container" type="Button" parent="HUD/phone_option/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "cancels"
+
 [node name="Player" parent="." instance=ExtResource("2_82j4y")]
 
 [node name="Lit" parent="." instance=ExtResource("4_21tjo")]
@@ -146,7 +157,8 @@ position = Vector2(55, 666)
 [connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/assignement" to="." method="_on_assignement_pressed"]
 [connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/play game" to="." method="_on_play_game_pressed"]
 [connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/cancel" to="." method="_on_cancel_pressed"]
-[connection signal="pressed" from="HUD/phone_option/PanelContainer/MarginContainer/HBoxContainer/contact" to="." method="_on_contact_pressed"]
+[connection signal="pressed" from="HUD/phone_option/PanelContainer/MarginContainer/HBoxContainer/contact" to="HUD" method="_on_contact_pressed"]
 [connection signal="pressed" from="HUD/phone_option/PanelContainer/MarginContainer/HBoxContainer/cancel_phone" to="." method="_on_cancel_phone_pressed"]
+[connection signal="pressed" from="HUD/phone_option/PanelContainer/MarginContainer/VBoxContainer/cancel _contact_container" to="HUD" method="_on_cancel__contact_container_pressed"]
 [connection signal="stat_changed" from="Player" to="." method="_on_player_stat_changed"]
 [connection signal="sleeping" from="Lit" to="." method="_on_lit_sleeping"]

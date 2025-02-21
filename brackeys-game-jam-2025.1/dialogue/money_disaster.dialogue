@@ -1,0 +1,12 @@
+~ start
+
+bon , un rat a manger le cable
+- refund it ...
+	you lost 70$ , mais ta un nouveau cable
+	do Global.player.decrement_gauge(70 , "money")  
+- reparer moi meme
+	finally , avec beaucoup d'effort  , tu empire la situation et depense 100$
+	do Global.player.decrement_gauge(100 , "money")  
+	do Global.player.decrement_gauge(50 , "energy")  
+
+=> END
