@@ -29,9 +29,11 @@ func sleep():
 	else:
 		
 		if(player.player_stress >= 50):
-			player.increment_gauge(80 , "energy")
+			player.increment_gauge(100 , "energy")
+			player.decrement_gauge(20 , "energy")
 		elif (player.player_stress >= 80):
-			player.increment_gauge(60 , "energy")
+			player.increment_gauge(100 , "energy")
+			player.decrement_gauge(40 , "energy")
 		else:
 			player.increment_gauge(100 , "energy")
 		Global.day_number += 1

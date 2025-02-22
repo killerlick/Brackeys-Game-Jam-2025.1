@@ -1,9 +1,9 @@
-~ start
-
-me:
-
-
-=> END
+~ no_assignment  
+%
+	me: Huh… no assignment today? Guess that means no work for once.  
+	me: Feels weird, but I’m not complaining. Time to actually relax for a change.  
+% me: the profesor didn't even call us , i guess this is why we don't have assignment.
+=> END  
 
 ~ study_no_energy
 
@@ -20,13 +20,24 @@ me:
 
 => END!
 
-~ assignement_no_energy
+~ assignment_no_energy
 
 % me: My brain has officially shut down. This assignment isn’t happening tonight.  
 % me: I’d love to finish this, but my brain has officially checked out. Maybe future me will deal with it...  
 
 
 => END!
+
+~ no_assignment_no_energy
+
+me: No assignments, no energy… guess that means I can just exist for a while.  
+
+me: Not sure if I should feel relieved or just completely drained.  
+
+me: Either way, I’m not moving from here.  
+
+=> END!
+
 
 ~ play_game_no_energy
 

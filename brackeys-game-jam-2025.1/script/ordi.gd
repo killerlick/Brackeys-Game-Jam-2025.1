@@ -20,12 +20,8 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		computer_option.show()
 
-
-
-
-
 func studying():
-	if(player.decrement_gauge(20 , "energy")):
+	if(player.decrement_gauge(25 , "energy")):
 		player.increment_gauge(2 , "intelligence")
 		player.increment_gauge(1 , "stress")
 	else:
@@ -33,17 +29,27 @@ func studying():
 		
 
 func work():
-	if(player.decrement_gauge(20 , "energy")):
-		player.increment_gauge(300 , "money")
+	if(player.decrement_gauge(25 , "energy")):
+		player.increment_gauge(100 , "money")
 	else:
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") , "work_no_energy")
 		
 
 func school_work():
-	pass
-
+	if(player.decrement_gauge(25 , "energy")):
+		if(Global.nb_assignment < 1):
+			player.increment_gauge(25 , "energy")
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") ,"no_assignment")
+		else:
+			pass
+	else:
+		if(Global.nb_assignment < 1):
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") ,"no_assignment_no_energy")
+		else:
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") ,"assignment_no_energy")
+			
 func play_game():
-	if(player.decrement_gauge(20 , "energy")):
+	if(player.decrement_gauge(25 , "energy")):
 		player.increment_gauge(2 , "moral")
 		player.decrement_gauge(5 , "stress")
 	else:

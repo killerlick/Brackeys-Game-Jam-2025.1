@@ -161,6 +161,7 @@ _data = {
 }
 
 [node name="HUD" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_vh2el")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

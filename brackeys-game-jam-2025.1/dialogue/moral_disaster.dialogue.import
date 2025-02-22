@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://8bo35d72jsm6"
+path="res://.godot/imported/moral_disaster.dialogue-412f44012807721a865280524c0e058d.tres"
+
+[deps]
+
+source_file="res://dialogue/moral_disaster.dialogue"
+dest_files=["res://.godot/imported/moral_disaster.dialogue-412f44012807721a865280524c0e058d.tres"]
+
+[params]
+
+defaults=true

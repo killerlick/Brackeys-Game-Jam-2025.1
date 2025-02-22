@@ -62,3 +62,7 @@ func _on_cancel__contact_container_pressed() -> void:
 func _on_contact_pressed() -> void:
 	phone_option.hide()
 	contact_onglet.show() # Replace with function body.
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	pass # Replace with function body.

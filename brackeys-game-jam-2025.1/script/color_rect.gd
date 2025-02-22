@@ -5,14 +5,16 @@ extends ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#await animation.animation_finished
 	pass
 
 func fade_in():
+	show()
 	day.text =  "day " + str(Global.day_number)
 	animation.play("fade_in")
 	
+	
 func fade_in_without_text():
+	show()
 	animation.play("fade_in_without_text")
 	
 func fade_out():
@@ -24,13 +26,6 @@ func fade_out_sleeping():
 	animation.play("fade_out_sleep")
 
 
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	print(anim_name)
-	if(anim_name == "fade_in" or anim_name == "fade_in_without_text"):
+	if(anim_name == "fade_in_without_text" or anim_name == "fade_in"):
 		hide()
-	elif(anim_name == "fade_out_sleep"):
-		fade_in()
-	else:
-		fade_in_without_text()
-		

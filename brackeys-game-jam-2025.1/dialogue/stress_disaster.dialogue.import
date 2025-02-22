@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dxnpi3r2k88yp"
+path="res://.godot/imported/stress_disaster.dialogue-c32ea5b82fa56ce8c117673c3cf359ff.tres"
+
+[deps]
+
+source_file="res://dialogue/stress_disaster.dialogue"
+dest_files=["res://.godot/imported/stress_disaster.dialogue-c32ea5b82fa56ce8c117673c3cf359ff.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,72 @@
+~ first_night_alone  
+
+me: …It’s way too quiet.  
+
+me: Every little sound feels *ten times* louder. Was that the fridge… or a serial killer?  
+
+me: I should be sleeping, but my brain has decided to overanalyze *everything*.  
+
+me: Maybe I just need some background noise… or to curl up under the blankets and pretend I’m not here.  
+
+me: …Yeah, that sounds like a solid plan.  
+do Global.player.decrement_gauge(25 , "energy")  
+do Global.player.increment_gauge(10 , "stress")  
+
+=> END  
+
+~ strange_noise_night  
+
+me: …What was that sound?  
+
+me: It came from outside… or was it just the wind?  
+
+me: Maybe I’m just imagining things. It’s probably nothing.  
+
+me: But... what if it’s something important? Should I check?  
+
+- Check it out
+	me: Alright, fine. I’ll get up and check.  
+	I get out of bed and move toward the noise.  
+	I bump into the table and stumble, but catch myself.  
+	me: Ouch, that hurt.  
+	I reach the window and look outside.  
+	me: …Oh, it’s just the wind. What a shocker.    
+	do Global.player.decrement_gauge(20 , "moral")  
+
+
+- Stay in bed 
+	me: Nah, I’m not going anywhere. If something bad happens, at least I’ll be *comfy* when it happens.
+	do Global.player.decrement_gauge(25 , "energy")  
+	do Global.player.increment_gauge(15 , "stress")  
+
+=> END  
+
+~ dad_call
+
+You wake up this morning, you notice missed calls from your father
+An air of panic takes over your body
+
+- Try to call him
+	me: Okay, calm down. He’s probably just trying to reach me for something important.  
+	me: I dial the number quickly, hoping it’s nothing serious.  
+	*Phone rings...*  
+	me: Come on, pick up... 
+	*No answer*  
+	me: Why isn't he picking up? This isn’t like him…  
+	do Global.player.decrement_gauge(20 , "moral")  
+	do Global.player.increment_gauge(10 , "stress")  
+
+
+- Call my mother instead
+	me: Maybe I should call Mom first. She’ll know what’s going on.  
+	me: I quickly dial her number, hoping she’s already in the loop.  
+	*Phone rings...* 
+	mom: Hey sweetie, what's wrong?  
+	me: Hi Mom, I saw missed calls from Dad, is everything okay?  
+	mom: Oh, don’t worry! He’s fine. He just found that old thing you were looking for—the one you thought you lost! He’s been trying to get a hold of you to tell you.  
+	me: Wait, really? That’s a relief!  
+	mom: Yeah, he’s super excited to give it to you. I’ll let him know you called.  
+	do Global.player.increment_gauge(10 , "moral")  
+
+
+=> END

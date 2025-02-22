@@ -106,7 +106,10 @@ layout_mode = 2
 theme_override_constants/separation = 25
 
 [node name="Portrait" type="TextureRect" parent="Balloon/Panel/Dialogue/HBoxContainer"]
+visible = false
+clip_contents = true
 layout_mode = 2
+size_flags_horizontal = 0
 texture = ExtResource("2_t0g7b")
 expand_mode = 2
 

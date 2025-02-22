@@ -1,11 +1,12 @@
 ~ start
 
 
+In the middle of the night, you hear a crunching noise coming from the fridge.
 A rat chewed through your cable. What do you do?  
 
 - **Buy a new one**  
-	You spend $70 on a replacement. Problem solved, but your wallet feels lighter...  
-	do Global.player.decrement_gauge(70, "money")  
+	You spend $200 on a replacement. Problem solved, but your wallet feels lighter...  
+	do Global.player.decrement_gauge(200, "money")  
 
 - **Try to fix it myself**  
 	if Global.player.player_intelligence >= 40  
@@ -13,7 +14,7 @@ A rat chewed through your cable. What do you do?
 	else  
 		Despite your best efforts, you only make things worse.  
 		Now, the socket is damaged too...  
-		You end up spending $100 to fix everything.  
-		do Global.player.decrement_gauge(100, "money")  
+		You end up spending $300 to fix everything.  
+		do Global.player.decrement_gauge(400, "money")  
 		do Global.player.decrement_gauge(50, "energy")
 => END

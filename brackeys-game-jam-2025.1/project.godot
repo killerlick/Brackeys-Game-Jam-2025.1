@@ -43,7 +43,7 @@ clic_droit={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/waking_up.dialogue", "res://dialogue/computer_interaction.dialogue", "res://dialogue/bed_interaction.dialogue", "res://dialogue/money_disaster.dialogue", "res://dialogue/first_day.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/waking_up.dialogue", "res://dialogue/computer_interaction.dialogue", "res://dialogue/bed_interaction.dialogue", "res://dialogue/money_disaster.dialogue", "res://dialogue/first_day.dialogue", "res://dialogue/professor_dialogue.dialogue", "res://dialogue/stress_disaster.dialogue", "res://dialogue/moral_disaster.dialogue")
 
 [rendering]
 

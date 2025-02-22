@@ -14,6 +14,8 @@ var phase
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hud.black_screen.fade_in()
+	await hud.black_screen.animation.animation_finished
 	player = get_node("Player") # Replace with function body.
 	Global.player = player
 	print(player)
@@ -27,10 +29,26 @@ func _on_player_stat_changed() -> void:
 
 func _on_lit_sleeping() -> void:
 	hud.black_screen.fade_out_sleeping()
-	if( Global.money_palier[0] != null):
-		if(Global.player_money > Global.money_palier[0]):
-			Global.money_disaster(player)
-			Global.export_player_stat(player)
+	await hud.black_screen.animation.animation_finished
+	var chose_misfortune = randi() % 10
+	match chose_misfortune :
+		_:
+			print("money disaster occured")
+			if( !Global.money_palier.is_empty()):
+				if(Global.player_money > Global.money_palier[0]):
+					await Global.money_disaster(player)
+		1 , 2,3:
+			if(!Global.all_stress_disaster.is_empty()):
+				print("stress disaster")
+				await Global.stress_disaster(player)
+
+		_:
+			print("tout est chill")
+	
+	hud.black_screen.fade_in()
+	await hud.black_screen.animation.animation_finished
+
+
 
 func _on_study_pressed() -> void:
 	ordi.studying()
