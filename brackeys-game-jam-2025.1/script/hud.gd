@@ -12,6 +12,7 @@ extends CanvasLayer
 
 @onready var contact_container = $phone_option/PanelContainer/MarginContainer/VBoxContainer/contact_container
 
+@onready var assignment_bar = $computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer/progression
 
 @onready var black_screen = $ColorRect
 
@@ -26,8 +27,12 @@ func _ready() -> void:
 		print(player)
 		set_gauge(player)
 		add_contact()
+	if(Global.nb_assignment == 0):
+		print("no assigne")
+		assignment_bar.hide()
 
-
+func show_progression_bar():
+	assignment_bar.show()
 
 func set_gauge(player : Player):
 	print("setgauge read")
@@ -36,9 +41,6 @@ func set_gauge(player : Player):
 	intelligence_bar.set_value(player.player_intelligence)
 	stress_bar.set_value(player.player_stress)
 	money.text = str(player.player_money)
-
-func show_dialogue():
-	pass
 
 func add_contact():
 	for contact in player.contact:

@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Brackeys Game Jam 2025.1"
+run/main_scene="res://scene/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+config/windows_native_icon="res://sprite/ordi.ico"
 
 [autoload]
 
@@ -43,7 +45,7 @@ clic_droit={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/waking_up.dialogue", "res://dialogue/computer_interaction.dialogue", "res://dialogue/bed_interaction.dialogue", "res://dialogue/money_disaster.dialogue", "res://dialogue/first_day.dialogue", "res://dialogue/professor_dialogue.dialogue", "res://dialogue/stress_disaster.dialogue", "res://dialogue/moral_disaster.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/waking_up.dialogue", "res://dialogue/computer_interaction.dialogue", "res://dialogue/bed_interaction.dialogue", "res://dialogue/money_disaster.dialogue", "res://dialogue/first_day.dialogue", "res://dialogue/professor_dialogue.dialogue", "res://dialogue/stress_disaster.dialogue", "res://dialogue/moral_disaster.dialogue", "res://dialogue/final_day.dialogue")
 
 [rendering]
 

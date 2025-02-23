@@ -45,3 +45,20 @@ me: Either way, I’m not moving from here.
 % me: I usually play for fun, not to suffer. No energy, no gaming today...  
 
 => END
+
+~ assignment_full
+
+me: Alright, time to get to work.  
+me: Wait… hold on. This is already done.  
+me: Did I seriously forget that I finished it? Wow.  
+me: Well, at least that’s one less thing to worry about. Guess I’ll just [b]pretend[/b] I was being extra responsible.  
+
+=> END!
+
+~ assignment_finish
+
+me: Finally, it’s done. Every last word, every last detail.  
+me: I should feel accomplished… but mostly, I just feel drained.  
+me: At least now I won’t have to stress about it. Future me better appreciate this.  
+
+=> END!

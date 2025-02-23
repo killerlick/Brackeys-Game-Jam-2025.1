@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://8f4p6qdixgpt"]
+[gd_scene load_steps=10 format=3 uid="uid://8f4p6qdixgpt"]
 
 [ext_resource type="Script" path="res://script/chambre.gd" id="1_r7aib"]
 [ext_resource type="PackedScene" uid="uid://c15wiyug4k7fy" path="res://scene/hud.tscn" id="1_sty3n"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://vlvm3vcmc4h0" path="res://scene/lit.tscn" id="4_21tjo"]
 [ext_resource type="PackedScene" uid="uid://c3pemqey1qiqm" path="res://scene/ordi.tscn" id="5_n4hy0"]
 [ext_resource type="PackedScene" uid="uid://b3rnjm3cy50p4" path="res://scene/phone.tscn" id="7_dmi11"]
+[ext_resource type="AudioStream" uid="uid://y0s5fc2rr273" path="res://sound/criquet.wav" id="8_flone"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2md85"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="chambre" type="Node2D"]
 script = ExtResource("1_r7aib")
@@ -30,63 +34,74 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD/computer_option"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.391406
-anchor_top = 0.415278
-anchor_right = 0.608594
-anchor_bottom = 0.584722
-offset_left = 20.0
-offset_top = 6.94724
-offset_right = 246.309
-offset_bottom = 115.053
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 28
-
-[node name="background_pc" type="PanelContainer" parent="HUD/computer_option/MarginContainer"]
+[node name="background_pc" type="PanelContainer" parent="HUD/computer_option"]
 layout_mode = 2
+offset_left = 529.655
+offset_top = 365.947
+offset_right = 1016.65
+offset_bottom = 507.947
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/computer_option/MarginContainer/background_pc"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/computer_option/background_pc"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/computer_option/background_pc/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="study" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer"]
+[node name="study" type="Button" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Study"
 
-[node name="work" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer"]
+[node name="work" type="Button" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Work"
 
-[node name="assignement" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer"]
+[node name="assignement" type="Button" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "assignment"
 
-[node name="play game" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer"]
+[node name="play game" type="Button" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Play game"
 
-[node name="cancel" type="Button" parent="HUD/computer_option/MarginContainer/background_pc/VBoxContainer"]
+[node name="cancel" type="Button" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "cancel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "No assignment"
+
+[node name="progression" type="ProgressBar" parent="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_styles/fill = SubResource("StyleBoxFlat_2md85")
 
 [node name="phone_option" type="Control" parent="HUD"]
 visible = false
@@ -152,13 +167,17 @@ position = Vector2(372, 461)
 [node name="phone" parent="." instance=ExtResource("7_dmi11")]
 position = Vector2(55, 666)
 
-[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/study" to="." method="_on_study_pressed"]
-[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/work" to="." method="_on_work_pressed"]
-[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/assignement" to="." method="_on_assignement_pressed"]
-[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/HBoxContainer/play game" to="." method="_on_play_game_pressed"]
-[connection signal="pressed" from="HUD/computer_option/MarginContainer/background_pc/VBoxContainer/cancel" to="." method="_on_cancel_pressed"]
+[node name="criquet" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_flone")
+
+[connection signal="pressed" from="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/study" to="." method="_on_study_pressed"]
+[connection signal="pressed" from="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/work" to="." method="_on_work_pressed"]
+[connection signal="pressed" from="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/assignement" to="." method="_on_assignement_pressed"]
+[connection signal="pressed" from="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/play game" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer2/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="HUD/phone_option/PanelContainer/MarginContainer/HBoxContainer/contact" to="HUD" method="_on_contact_pressed"]
 [connection signal="pressed" from="HUD/phone_option/PanelContainer/MarginContainer/HBoxContainer/cancel_phone" to="." method="_on_cancel_phone_pressed"]
 [connection signal="pressed" from="HUD/phone_option/PanelContainer/MarginContainer/VBoxContainer/cancel _contact_container" to="HUD" method="_on_cancel__contact_container_pressed"]
+[connection signal="money_game_over" from="Player" to="." method="_on_player_money_game_over"]
 [connection signal="stat_changed" from="Player" to="." method="_on_player_stat_changed"]
 [connection signal="sleeping" from="Lit" to="." method="_on_lit_sleeping"]

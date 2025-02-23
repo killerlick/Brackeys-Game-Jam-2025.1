@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://vlvm3vcmc4h0"]
+[gd_scene load_steps=5 format=3 uid="uid://vlvm3vcmc4h0"]
 
 [ext_resource type="Script" path="res://script/lit.gd" id="1_mi0wr"]
 [ext_resource type="Texture2D" uid="uid://bji2mnfgqtt0q" path="res://sprite/lit.png" id="2_0pxo0"]
+[ext_resource type="AudioStream" uid="uid://flpn0a2o2chb" path="res://sound/sleep.wav" id="3_3nrk0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oufd1"]
 size = Vector2(486, 375)
@@ -15,6 +16,9 @@ texture = ExtResource("2_0pxo0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(21, -4.5)
 shape = SubResource("RectangleShape2D_oufd1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3nrk0")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

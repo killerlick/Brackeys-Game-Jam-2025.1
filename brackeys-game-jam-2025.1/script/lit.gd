@@ -1,6 +1,8 @@
 extends Area2D
 
 @onready var sprite = $Sprite2D
+@onready var audio = $AudioStreamPlayer2D
+
 
 signal sleeping
 
@@ -13,10 +15,6 @@ func _ready() -> void:
 	if(player != null):
 		pass
 
-
-
-
-
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		print("Le joueur a cliqué sur le lit !")
@@ -27,15 +25,7 @@ func sleep():
 	if(player.player_energy >= 80):
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/bed_interaction.dialogue") , "full_energy")
 	else:
-		
-		if(player.player_stress >= 50):
-			player.increment_gauge(100 , "energy")
-			player.decrement_gauge(20 , "energy")
-		elif (player.player_stress >= 80):
-			player.increment_gauge(100 , "energy")
-			player.decrement_gauge(40 , "energy")
-		else:
-			player.increment_gauge(100 , "energy")
+		audio.play()
 		Global.day_number += 1
 		Global.import_player_stat(player)
 		sleeping.emit()

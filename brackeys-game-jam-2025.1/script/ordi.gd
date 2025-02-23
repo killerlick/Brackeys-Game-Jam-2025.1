@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var sprite = $Sprite2D
 @onready var computer_option = $"../HUD/computer_option"
-
+@onready var progression_bar = $"../HUD/computer_option/background_pc/MarginContainer/HBoxContainer/VBoxContainer/progression"
 var player : Player
 
 # Called when the node enters the scene tree for the first time.
@@ -23,14 +23,16 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func studying():
 	if(player.decrement_gauge(25 , "energy")):
 		player.increment_gauge(2 , "intelligence")
-		player.increment_gauge(1 , "stress")
+		player.increment_gauge(2 , "stress")
+		player.decrement_gauge(2 , "moral")
 	else:
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") , "study_no_energy")
 		
 
 func work():
 	if(player.decrement_gauge(25 , "energy")):
-		player.increment_gauge(100 , "money")
+		player.decrement_gauge(70 , "money")
+		player.decrement_gauge(3 , "moral")
 	else:
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") , "work_no_energy")
 		
@@ -41,7 +43,20 @@ func school_work():
 			player.increment_gauge(25 , "energy")
 			DialogueManager.show_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") ,"no_assignment")
 		else:
-			pass
+			if(progression_bar.value < 100):
+				if(player.player_intelligence <40):
+					progression_bar.value += 12
+				else:
+					progression_bar.value += 20
+					
+				if(progression_bar.value == 100):
+					Global.assignment_finished = true
+					DialogueManager.show_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") ,"assignment_finish")
+			else:
+				DialogueManager.show_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") ,"assignment_full")
+				
+				
+			
 	else:
 		if(Global.nb_assignment < 1):
 			DialogueManager.show_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") ,"no_assignment_no_energy")
@@ -51,7 +66,7 @@ func school_work():
 func play_game():
 	if(player.decrement_gauge(25 , "energy")):
 		player.increment_gauge(2 , "moral")
-		player.decrement_gauge(5 , "stress")
+		player.decrement_gauge(3, "stress")
 	else:
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/computer_interaction.dialogue") , "play_game_no_energy")
 		

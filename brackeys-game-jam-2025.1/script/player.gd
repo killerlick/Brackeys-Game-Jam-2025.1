@@ -3,6 +3,8 @@ extends Node
 class_name Player
 
 signal stat_changed
+signal money_game_over
+signal stress_game_over
 
 @export var contact : Array[Npc]
 
@@ -12,7 +14,7 @@ const MAXBAR : int = 100
 
 var player_energy : int = 100
 var player_moral : int = 70
-var player_intelligence : int = 30
+var player_intelligence : int = 25
 var player_stress: int = 0
 var player_alcolemy : int = 0
 var player_health : int = 90
@@ -50,16 +52,17 @@ func increment_gauge(nb : int , gauge_name : String):
 func decrement_gauge(nb : int , gauge_name : String)-> bool:
 	match gauge_name :
 		"energy":
-			
 			if(player_energy>=nb):
 				player_energy-=nb
 				print("de" , player_energy)
 			else:
+				player_energy=0
 				return false
 		"moral":
 			if(player_moral>=nb):
 				player_moral-=nb
 			else:
+				player_moral = 0 
 				return false
 		"intelligence":
 			if(player_intelligence>=nb):
@@ -70,6 +73,7 @@ func decrement_gauge(nb : int , gauge_name : String)-> bool:
 			if(player_stress>=nb):
 				player_stress-=nb
 			else:
+				player_stress = 0 
 				return false
 		"alcolemy":
 			if(player_alcolemy>=nb):
@@ -80,6 +84,7 @@ func decrement_gauge(nb : int , gauge_name : String)-> bool:
 			if(player_money>=nb):
 				player_money-=nb
 			else:
+				money_game_over.emit()
 				return false
 	stat_changed.emit()
 	return true

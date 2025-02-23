@@ -25,6 +25,9 @@ func fade_out_sleeping():
 	show()
 	animation.play("fade_out_sleep")
 
+func end_fade_out():
+	show()
+	animation.play("end_fade_out")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "fade_in_without_text" or anim_name == "fade_in"):

@@ -1,19 +1,30 @@
 ~ assignement_given
 
-professor: Alright, listen up, everyone. I know how much you *love* assignments, so here’s a little gift for you.  
-
-professor: Your next assignment is due at the end of the week. Yes, that means *this* week, not "whenever you feel like it."  
-
-professor: It’s a simple task—if you actually paid attention in class, that is. Write a well-structured analysis on today's topic, using *real* sources. And no, Wikipedia doesn't count.  
-
-professor: Plagiarism? Oh, please, surprise me and *don’t* copy-paste half your paper from some sketchy website. I *will* check.  
-
+professor: Alright, listen up, everyone. I know how much you [b]love[/b] assignments, so here’s a little gift for you.  
+professor: Your next assignment is due in 2 days. Yes, that means *this* week, not "whenever you feel like it."  
+professor: It’s a simple task—if you actually paid attention in class, that is. Write a well-structured analysis on today's topic, using [b]real[/b] sources. And no, Wikipedia doesn't count.  
+professor: Plagiarism? Oh, please, surprise me and [b]don’t[/b] copy-paste half your paper from some sketchy website. I [b]will[/b] check.  
 professor: Late work? Love the enthusiasm, but no. If you have a *real* reason, tell me before the deadline, not after you've mysteriously "lost your file" five minutes before submission.  
-
 professor: And please, do me a favor—proofread your work. If I see another essay that looks like it was written by a sleep-deprived raccoon, I might actually reconsider my career choices.  
-
 professor: That’s it. Have fun, don’t disappoint me (again), and try not to make me regret giving you this assignment.  
 
-
-
 => END
+
+~ assignment_finished
+
+professor: Well, well, look who actually submitted their work [b]on time[/b]. I’m almost impressed.  
+professor: Let’s see… Proper structure? Check. No obvious plagiarism? Check. Actual effort? Shocking, but check.  
+professor: Congratulations, you’ve officially met the [b]bare minimum[/b] of academic expectations. Keep this up, and who knows? Maybe one day I’ll grade your paper without sighing first.  
+do Global.player.increment_gauge(12 , "moral")
+=> END  
+
+~ assignment_incomplete  
+
+professor: Alright, let’s take a look at—oh.  
+professor: This… this isn’t finished.  
+professor: Did you [b]seriously[/b] think I wouldn’t notice? Was this an attempt? A cry for help? A modern art piece symbolizing procrastination?  
+professor: Whatever it is, I suggest you [b]fix it[/b], unless you’re aiming for a bold new academic strategy called [b]failing[/b].  
+do Global.player.decrement_gauge(15 , "moral")
+
+=> END  
+

@@ -5,10 +5,12 @@ enum day_phase { MATIN ,MIDI ,SOIR , NUIT}
 
 var player : Player
 
-var money_palier : Array[int] = [600 , 800 , 1100]
+var money_palier : Array[int] = [200 , 100 , 200 ,0]
+var encountered_rat : bool = false
 
 var actual_phase  = day_phase.MATIN
-var nb_assignment = 0 
+var nb_assignment :int = 0 
+var assignment_finished : bool = false
 
 var NB_ENDING : int = 10
 var ending_unlocked : int = 0
@@ -20,7 +22,8 @@ var player_stress : int = 0
 var player_alcolemy : int = 0
 var player_money : int = 500
 
-var all_stress_disaster = ["strange_noise_night" , "dad_call"]
+var finish : bool = false
+var all_stress_disaster = ["strange_noise_night" , "dad_call" , "strange_noise_night" , "noisy_neighbors"]
 
 func next_phase():
 	match actual_phase :
@@ -39,28 +42,59 @@ func event_manager():
 func money_disaster(player : Player ):
 	if(player_money > money_palier[0]):
 		print(player_money)
-		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/money_disaster.dialogue") , "start")
+		if(encountered_rat):
+			DialogueManager.show_example_dialogue_balloon(load("res://dialogue/money_disaster.dialogue") , "start2")
+		else:
+			DialogueManager.show_example_dialogue_balloon(load("res://dialogue/money_disaster.dialogue") , "start")
+			encountered_rat = true
 		await DialogueManager.dialogue_ended
 		money_palier.pop_front()
-		export_player_stat(player)
 
 func moral_disaster(player : Player):
 	pass
 
 func stress_disaster(player : Player):
-	if(day_number < 3 && player.player_stress <= 2 ):
+	if(day_number < 3 && player.player_stress <= 10 ):
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/stress_disaster.dialogue") , "first_night_alone")
 	else:
 		var disaster_chosen = randi() % all_stress_disaster.size()
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/stress_disaster.dialogue") ,all_stress_disaster.pop_at(disaster_chosen) )
 	await DialogueManager.dialogue_ended
-	export_player_stat(player)
   
-func main_event() -> bool:
+func main_morning_event() -> bool:
 	if(day_number == 5):
 		DialogueManager.show_dialogue_balloon(load("res://dialogue/professor_dialogue.dialogue"),"assignement_given")
+		await DialogueManager.dialogue_ended
 		nb_assignment+=1
 		return true
+	
+	elif(day_number == 7):
+		if(assignment_finished):
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/professor_dialogue.dialogue") , "assignment_finished")
+			await DialogueManager.dialogue_ended
+		else:
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/professor_dialogue.dialogue") , "assignment_incomplete")
+			await DialogueManager.dialogue_ended
+		return true
+	elif(day_number == 12):
+		if(player_stress >= 95 ):
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/final_day.dialogue") , "final_exam_stressed")
+			await DialogueManager.dialogue_ended
+		elif(player_intelligence >= 90 && player_energy != 0):
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/final_day.dialogue") , "exam_success")
+			await DialogueManager.dialogue_ended
+		elif(player_intelligence <= 90 && player_energy != 0):
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/final_day.dialogue") , "exam_mid")
+			await DialogueManager.dialogue_ended
+		elif(player_energy == 0):
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/final_day.dialogue") , "exam_missed")
+			await DialogueManager.dialogue_ended
+		elif(player_moral < 30):
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/final_day.dialogue") , "exam_refused")
+			await DialogueManager.dialogue_ended
+		finish = true
+		return true
+		
 	return false
 
 func import_player_stat(player : Player):

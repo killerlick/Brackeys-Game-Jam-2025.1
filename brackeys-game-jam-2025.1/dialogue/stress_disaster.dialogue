@@ -2,15 +2,15 @@
 
 me: …It’s way too quiet.  
 
-me: Every little sound feels *ten times* louder. Was that the fridge… or a serial killer?  
+me: Every little sound feels [b]ten times[/b] louder. Was that the fridge… or a serial killer?  
 
-me: I should be sleeping, but my brain has decided to overanalyze *everything*.  
+me: I should be sleeping, but my brain has decided to overanalyze [b]everything[/b].  
 
 me: Maybe I just need some background noise… or to curl up under the blankets and pretend I’m not here.  
 
 me: …Yeah, that sounds like a solid plan.  
 do Global.player.decrement_gauge(25 , "energy")  
-do Global.player.increment_gauge(10 , "stress")  
+do Global.player.increment_gauge(20 , "stress")  
 
 => END  
 
@@ -35,32 +35,32 @@ me: But... what if it’s something important? Should I check?
 
 
 - Stay in bed 
-	me: Nah, I’m not going anywhere. If something bad happens, at least I’ll be *comfy* when it happens.
+	me: Nah, I’m not going anywhere. If something bad happens, at least I’ll be [b]comfy[/b] when it happens.
 	do Global.player.decrement_gauge(25 , "energy")  
-	do Global.player.increment_gauge(15 , "stress")  
+	do Global.player.increment_gauge(25 , "stress")  
 
 => END  
 
 ~ dad_call
 
-You wake up this morning, you notice missed calls from your father
+You wake up in the middle of the night, you notice missed calls from your father
 An air of panic takes over your body
 
 - Try to call him
 	me: Okay, calm down. He’s probably just trying to reach me for something important.  
 	me: I dial the number quickly, hoping it’s nothing serious.  
-	*Phone rings...*  
+	[b]Phone rings...[/b] 
 	me: Come on, pick up... 
-	*No answer*  
+	[b]No answer[/b]
 	me: Why isn't he picking up? This isn’t like him…  
 	do Global.player.decrement_gauge(20 , "moral")  
-	do Global.player.increment_gauge(10 , "stress")  
+	do Global.player.increment_gauge(15 , "stress")  
 
 
 - Call my mother instead
 	me: Maybe I should call Mom first. She’ll know what’s going on.  
 	me: I quickly dial her number, hoping she’s already in the loop.  
-	*Phone rings...* 
+	[b]Phone rings...[/b]
 	mom: Hey sweetie, what's wrong?  
 	me: Hi Mom, I saw missed calls from Dad, is everything okay?  
 	mom: Oh, don’t worry! He’s fine. He just found that old thing you were looking for—the one you thought you lost! He’s been trying to get a hold of you to tell you.  
@@ -70,3 +70,36 @@ An air of panic takes over your body
 
 
 => END
+
+~ noisy_neighbors  
+
+me: …Are they serious right now?  
+me: It’s the middle of the night, and they’re acting like it’s a [b]music festival[/b].  
+me: I could try to ignore it… or do something about it.  
+
+- Bang on the wall  
+	me: That’s it. I’ve had enough.  
+	[b]THUMP THUMP THUMP![/b]  
+	…Silence.
+	me: Did it work?  
+	[b]Loud music resumes, even louder than before.[/b]  
+	me: Great. That totally backfired.  
+	do Global.player.decrement_gauge(15 , "moral")  
+	do Global.player.increment_gauge(20 , "stress")  
+
+- Try to sleep anyway  
+	me: Maybe if I just focus really hard on sleeping, I can tune it out…  
+	I bury my face in my pillow and hope for the best.  
+	me: …It’s not working. At all.  
+	me: This is going to be a [b]loooooong[/b] night.  
+	do Global.player.decrement_gauge(30 , "energy")  
+	do Global.player.decrement_gauge(10 , "moral")  
+
+- Put on headphones  
+	me: Fine, if I can’t make them shut up, I’ll just block them out.  
+	me: I put on my headphones and blast white noise to drown them out.  
+	me: It’s not perfect, but at least I might get some sleep.  
+	do Global.player.decrement_gauge(15 , "energy")  
+	do Global.player.increment_gauge(5 , "stress")  
+
+=> END  

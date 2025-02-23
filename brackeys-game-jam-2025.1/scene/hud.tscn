@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c15wiyug4k7fy"]
+[gd_scene load_steps=15 format=3 uid="uid://c15wiyug4k7fy"]
 
 [ext_resource type="Script" path="res://script/hud.gd" id="1_vh2el"]
 [ext_resource type="Script" path="res://script/color_rect.gd" id="2_y1tru"]
@@ -14,6 +14,9 @@ bg_color = Color(1, 1, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nby5j"]
 bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_lfo0b"]
+font_names = PackedStringArray("Sitka Subheading")
 
 [sub_resource type="Animation" id="Animation_5uskl"]
 length = 0.001
@@ -40,6 +43,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("the end:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_xgb5j"]
@@ -151,9 +166,50 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_xe3r5"]
+resource_name = "end_fade_out"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 4.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("the end:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 2, 3.96667, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f63b8"]
 _data = {
 "RESET": SubResource("Animation_5uskl"),
+"end_fade_out": SubResource("Animation_xe3r5"),
 "fade_in": SubResource("Animation_xgb5j"),
 "fade_in_without_text": SubResource("Animation_0xrkf"),
 "fade_out": SubResource("Animation_x8oc3"),
@@ -289,7 +345,6 @@ theme_override_constants/outline_size = 5
 text = "500"
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -312,6 +367,28 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "day 1"
+
+[node name="the end" type="Label" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -11.5
+offset_right = 39.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.133196, 0.133196, 0.133196, 1)
+theme_override_constants/outline_size = 94
+theme_override_fonts/font = SubResource("SystemFont_lfo0b")
+theme_override_font_sizes/font_size = 190
+text = "THE END ?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 libraries = {

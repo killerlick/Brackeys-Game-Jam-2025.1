@@ -4,12 +4,33 @@
 In the middle of the night, you hear a crunching noise coming from the fridge.
 A rat chewed through your cable. What do you do?  
 
-- **Buy a new one**  
+- Buy a new one
 	You spend $200 on a replacement. Problem solved, but your wallet feels lighter...  
 	do Global.player.decrement_gauge(200, "money")  
 
-- **Try to fix it myself**  
+- Try to fix it myself
 	if Global.player.player_intelligence >= 40  
+		With your skills, you manage to repair the cable. Crisis averted!  
+	else  
+		Despite your best efforts, you only make things worse.  
+		Now, the socket is damaged too...  
+		You end up spending $400 to fix everything.  
+		do Global.player.decrement_gauge(400, "money")  
+		do Global.player.decrement_gauge(50, "energy")
+=> END
+
+~ start2
+
+
+In the middle of the night, you hear a crunching noise coming from the fridge.
+THE SAME RATE CHEWED THROUGH YOUR CABLE AGAIN. What do you do?  
+
+- Buy a new one
+	You spend $200 on a replacement. Problem solved, but your wallet feels lighter...  
+	do Global.player.decrement_gauge(200, "money")  
+
+- Try to fix it myself
+	if Global.player.player_intelligence >= 60  
 		With your skills, you manage to repair the cable. Crisis averted!  
 	else  
 		Despite your best efforts, you only make things worse.  
@@ -17,4 +38,16 @@ A rat chewed through your cable. What do you do?
 		You end up spending $300 to fix everything.  
 		do Global.player.decrement_gauge(400, "money")  
 		do Global.player.decrement_gauge(50, "energy")
+
+- Try to talk with the rat [if Global.player.player_moral < 50]
+	me: "Hey, little guy. Could you... maybe stop chewing on my cable? I've had a rough day, and I really don’t need any more problems."
+	The rat pauses for a moment, looks at you with its beady eyes, and then slowly continues chewing.
+	me: "Honestly, I get it. Life’s tough. But still, I need that cable, you know? Can we talk about this?"
+	You continue rambling, hoping the rat will at least listen to you.
+	The rat stops chewing, seemingly listening. You talk about your day, your frustrations, and everything that’s been going wrong.
+	Finally, the rat scurries off, leaving the cable untouched. You stare at it for a moment, unsure if that was some sort of miracle or just sheer luck.
+	You don’t need to spend any money, but you feel strangely tired from the bizarre interaction.
+	do Global.player.decrement_gauge(25, "energy")
+	do Global.player.increment_gauge(20,"moral")
 => END
+

@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://bb1muwlfkmwxe"]
+[gd_scene load_steps=6 format=3 uid="uid://bb1muwlfkmwxe"]
 
 [ext_resource type="Script" path="res://script/main_menu.gd" id="1_73ot4"]
+[ext_resource type="Shader" path="res://main_menu.gdshader" id="2_mhleh"]
+[ext_resource type="Texture2D" uid="uid://cr2toy2gtwjyf" path="res://sprite/despairStudent.jpg" id="2_wknvx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6p8y5"]
+shader = ExtResource("2_mhleh")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2y56"]
+bg_color = Color(0.193571, 0.165835, 0.156902, 0.756863)
+border_width_left = 35
+border_width_top = 5
+border_width_right = 35
+border_width_bottom = 5
+border_color = Color(0.192157, 0.164706, 0.156863, 0.756863)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,12 +29,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_73ot4")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6p8y5")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wknvx")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 163.0
 grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -28,22 +59,44 @@ layout_mode = 2
 
 [node name="title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "VIE D'ETUDIANT"
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 14
+theme_override_font_sizes/font_size = 77
+text = "STUDY NIGHMARE"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_bottom = 90
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 170
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/outline_size = 30
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_u2y56")
 text = "PLAY"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
 text = "QUIT"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
